@@ -1,6 +1,8 @@
 angular.module('minhasDiretivas', [])
 	.directive('meuPainel', function() {
 
+		//Este arquivo é para uma tag chamada <meu-painel></meu-painel>
+
 		var ddo = {};
 
 		ddo.restrict = "AE"; //ddo é directive definition object usado para criar tags no html
