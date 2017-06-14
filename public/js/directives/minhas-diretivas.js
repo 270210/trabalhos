@@ -17,4 +17,18 @@ angular.module('minhasDiretivas', [])
         ddo.templateUrl = 'js/directives/meu-painel.html'; //quando a tag for busca onde ela vai ler a estrutura nesse caso ela vai busca o mepainel.html
 
 		return ddo;
+	}).directive('minhaFoto',function(){ //criando mais uma tag
+		
+		var ddo = {};
+
+		ddo.restrict = "AE";
+
+		ddo.scope = {
+			titulo:'@', //não esquecer dessa virgula se caso tiver algo para agrecentar antes de fechar o corpo
+			url:'@'
+		};
+
+		ddo.template = '<img class="img-reponsive center-block" src="{{url}}" alt="{{titulo}}"></img>';//nesse caso ele irá cria uma imagen no html
+
+		return ddo;
 	});
