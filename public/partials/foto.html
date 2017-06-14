@@ -1,8 +1,9 @@
 <div class="page-header text-center">
     <h1>{{foto.titulo}}</h1> <!--colocando o que escrevel no ng-model="foto.titulo" AQUI atraves do data binding-->
 </div>
-    <p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+    <p ng-show="mensagem.length" class="alert alert-info">{{mensagem}}</p><!--colocando uma mensagem de sucesso ou não se for o caso-->
 <form novalidate name="formulario" class="row" ng-submit="submeter()"><!--ng-submit irá execultar uma função denominada submete() no controller-->
+<!--no caso esse atributo novalidade ele desativa as validação do html restando assim a do angular-->
     <div class="col-md-6">
         <div class="form-group">
             <label>TITULO</label>
