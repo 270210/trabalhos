@@ -2,8 +2,8 @@ angular.module('alurapic').controller('FotosController', function($scope, $http)
 	
 	//Este arquivo ele pega as imagens atraves do http.get e coloca dentro de um array
 
-	$scope.fotos = [];
-	$scope.filtro = '';
+	$scope.fotos = [];//array
+	$scope.filtro = '';//pegando o filtro e manipulando ele
 
 	$http.get('/v1/fotos')
 	.success(function(retorno) {
