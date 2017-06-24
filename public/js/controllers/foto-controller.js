@@ -2,7 +2,7 @@ angular.module('alurapic').controller('FotoController', function ($scope, $http,
     $scope.foto = {};
     $scope.mensagem = '';
 
-    if($routeParams.fotoId){
+    if($routeParams.fotoId){//caso a url seja para pegar um dado do banco de dados
         $http.get('v1/fotos/' + $routeParams.fotoId)
         .success(function (foto) {
             $scope.foto = foto;
