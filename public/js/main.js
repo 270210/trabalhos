@@ -1,4 +1,4 @@
-angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute']).config(function ($routeProvider,$locationProvider) {
+angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute','ngResource']).config(function ($routeProvider,$locationProvider) {
 
 
     //Este arquivo é para ler as depedencias que o angular precisa para rodar

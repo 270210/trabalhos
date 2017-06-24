@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('FotosController', function($scope, $http) {
+angular.module('alurapic').controller('FotosController', function($scope, $http,$resource) {
 	
 	//Este arquivo ele pega as imagens atraves do http.get e coloca dentro de um array
 
@@ -6,26 +6,27 @@ angular.module('alurapic').controller('FotosController', function($scope, $http)
 	$scope.filtro = '';//pegando o filtro e manipulando ele
 	$scope.mensagem = '';
 
-	$http.get('/v1/fotos')
-	.success(function(retorno) {
-		console.log(retorno);
-		$scope.fotos = retorno; // não precisa fazer retorno.data
-	})
-	.error(function(erro) {
-		console.log(erro);
+	var recursoFoto = $resource('v1/fotos/:fotoId'); //neste caso seguindo o padrão RESP instaciamos o resource 
+
+	recursoFoto.query(function (fotos) {//metodo query fazendo uma busca de uma coleção de itens
+		$scope.fotos = fotos;
+	}, function (erro) {
+		console.log(erro);	
 	});
-
-	//Na manipu
-
+	
 	$scope.remover = (foto)=>{
-		$http.delete('v1/fotos/' + foto._id).success(function(){
+		recursoFoto.delete({fotoId : foto._id},function() {
+
 			var indiceFoto = $scope.fotos.indexOf(foto);//pegando o indece da foto
 			$scope.fotos.splice(indiceFoto,1);///removendo a foto que encontra-se na variavel indeceFoto e a quantidade que quero excluir
-			$scope.mensagem = 'Foto' + " " + foto.titulo + " " + 'removida com Sucesso!!';
-		}).error((erro)=>{
+			$scope.mensagem = 'Foto' + " " + foto.titulo + " " + 'removida com Sucesso!!';	
+
+		}, function(erro) {
+			
 			console.log(erro);
 			$scope.mensagem = 'Não foi possivel remover a ' + ' ' +  foto.titulo + ' ' + 'com Sucesso!!';
-		})
+		});
+		
 	};
 
 });
