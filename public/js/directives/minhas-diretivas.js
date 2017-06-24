@@ -31,4 +31,16 @@ angular.module('minhasDiretivas', [])
 		ddo.template = '<img class="img-reponsive center-block" src="{{url}}" alt="{{titulo}}"></img>';//nesse caso ele irá cria uma imagen no html
 
 		return ddo;
+	}).directive('meuBotaoPerigo', function() {
+		var ddo = {};
+		ddo.restrict = "E";
+
+		ddo.scope = {
+			nome:'@',
+			acao:'&' //expreção para ser avaliada fazendo que acao(foto) não execute como uma string e sim como uma acao
+		};
+
+		ddo.template = '<button ng-click="acao(foto)" class="btn btn-danger btn-block">{{nome}}</button>';
+
+		return ddo;
 	});
