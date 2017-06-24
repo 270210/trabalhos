@@ -9,7 +9,7 @@
             <label>TITULO</label>
             <input ng-model="foto.titulo" name="titulo" class="form-control" required ng-maxlength="20"><!--colocando o valor titulo do controller no html-->
             <span ng-show="formulario.$submitted && formulario.titulo.$error.required" class="form-control alert-danger">
-                Título requerido
+                Título requerido     <!--validando a titulo-->
             </span>
             <span ng-show="formulario.$submitted && formulario.titulo.$error.maxlength" class="form-control alert-danger">
                 Este campo deve ter no máximo 20 caracteres
@@ -19,7 +19,7 @@
             <label>URL</label>
             <input ng-model="foto.url" name="url" class="form-control" required><!--colocando o valor url do controller no html-->
             <span ng-show="formulario.$submitted && formulario.url.$error.required" class="form-control alert-danger">
-                URL requirido
+                URL requirido   <!--validando a URL-->
             </span>
         </div>
         <div class="form-group">
@@ -33,6 +33,9 @@
             <select name="grupo" class="form-control">
                 <option value=""> Selecione Grupo</option>
             </select>
+            <span ng-show="formulario.$submitted && formulario.grupo.$error.required" class="form-control alert-danger">
+                Seleção de grupo obrigatório      <!--validando a seleção de grupo-->
+            </span>
         </div>
 
         <button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid">Salvar</button>
