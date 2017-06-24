@@ -27,6 +27,14 @@
             <textarea ng-model="foto.descricao" name="descrição" class="form-control"><!--colocando o valor descrição do controller no html-->
             </textarea>
         </div>
+
+        <div class="form-group"><!-- Area de seleção -->
+        <label>Grupo</label>
+            <select name="grupo" class="form-control">
+                <option value=""> Selecione Grupo</option>
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid">Salvar</button>
         <a href="/" class="btn btn-primary">Voltar</a><!--fazendo o site voltar um arquivo-->
         <hr>
