@@ -1,12 +1,10 @@
-angular.module('alurapic').controller('FotosController', function($scope, $http,$resource) {
+angular.module('alurapic').controller('FotosController', function($scope, $http,recursoFoto) {
 	
 	//Este arquivo ele pega as imagens atraves do http.get e coloca dentro de um array
 
 	$scope.fotos = [];//array
 	$scope.filtro = '';//pegando o filtro e manipulando ele
-	$scope.mensagem = '';
-
-	var recursoFoto = $resource('v1/fotos/:fotoId'); //neste caso seguindo o padrão RESP instaciamos o resource 
+	$scope.mensagem = ''; 
 
 	recursoFoto.query(function (fotos) {//metodo query fazendo uma busca de uma coleção de itens
 		$scope.fotos = fotos;
