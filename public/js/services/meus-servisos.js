@@ -8,4 +8,8 @@ angular.module('meusServisos', ['ngResource']).factory('recursoFoto',function ($
         }
     });
 
+}).factory('cadastroDeFoto',function(recursoFoto,$q) {
+    var servicos = {};
+    
+
 });
