@@ -11,12 +11,14 @@ angular.module('meusServisos', ['ngResource']).factory('recursoFoto', function (
 }).factory('cadastroDeFoto', function (recursoFoto, $q) {//$q seria o nosso queue
 
     var service = {};
+    var evento = 'fotoCadastrada';
 
     service.cadastrar = function (foto) {//cadastrar recebe uma foto que irá retornar uma promisse porque retorna uma $q
         return $q(function (resolve, reject) {
             if (foto._id) {//se foto.id for preenchida entra aki
 
                 recursoFoto.update({ fotoId: foto._id }, foto, function () {//caso seja um update que eu fiz na foto entra aki
+                    $scope.$broadcast(evento); //pegando o focado e quando ele for chamado ele irá execultar uma uma diretiva que etá pronta para receber a chamada
                     resolve({
                         mensagem:'Foto' + foto.titulo + 'Atualizada com Sucesso!!',
                         inclusao: false //objeto que será enviado caso seja um update
@@ -30,6 +32,7 @@ angular.module('meusServisos', ['ngResource']).factory('recursoFoto', function (
 
             } else {//caso a foto seja nova e precisa ser salva
                 recursoFoto.save(foto,function() {
+                    $scope.$broadcast(evento); //pegando o focado e quando ele for chamado ele irá execultar uma   diretiva que etá pronta para receber a chamada
                     resolve({//o resolve tem que passar um objeto para ele
                         mensagem: 'Foto' + foto.titulo + 'Incluída com Sucesso!!',
                         inclusao: true
