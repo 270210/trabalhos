@@ -47,7 +47,7 @@ angular.module('minhasDiretivas', [])
 		var ddo = {};
 		ddo.restrict = "A";
 
-		ddo.link = function(scope,element) {
+		ddo.link = function(scope,element) {//essa função link nos dá acesso a minulação do DOM
 			scope.$on('fotoCadastrada',function() {//se evento fotoCadastrada for disparado ele irá execultar esse função
 				element[0].focus();
 			});
@@ -55,4 +55,18 @@ angular.module('minhasDiretivas', [])
 
 		return ddo;
 
+	}).directive('meusTitulos',function() {
+		
+		var ddo = {};
+		ddo.restrict = "E";
+
+		ddo.template = '<ul><li ng-repeat="titulo in titulos">{{titulo}}</li></ul>';//templade que será inserido a cada rodada de um loop
+		ddo.controller = function($scope,recursoFoto) {
+			recursoFoto.query(function(fotos) {
+				$scope.titulos = fotos.map(function(foto) {//A função map itera sobre nossa lista fornecendo acesso ao elemento da iteração no seu parâmetro. 
+					return foto.titulo;//retornando somente os titulos da fotos
+				});
+			});
+		};
+		return ddo;
 	});
